@@ -1,11 +1,5 @@
 # AA2 - CUPS: impressora virtual compartida
 
-## 1. Què he de fer?
-
-En aquesta activitat he de configurar una impressora virtual amb CUPS. La impressora estarà instal·lada al servidor Ubuntu Server i després la faré servir des del client Zorin OS.
-
-La idea és poder enviar documents des del client i que el servidor els guardi en format PDF.
-
 ## 2. Preparar les màquines i comprovar la xarxa
 
 Primer he iniciat les dues màquines virtuals: Ubuntu Server, que farà de servidor, i Zorin OS, que serà el client.
@@ -27,8 +21,8 @@ ping IP_DEL_SERVIDOR
 Si arriben les respostes, vol dir que les dues màquines es poden comunicar.
 
 **Dades de la meva configuració**
-- IP del servidor: `[ESCRIU AQUÍ LA IP]`
-- IP del client: `[ESCRIU AQUÍ LA IP]`
+- IP del servidor: 192.168.56.108
+- IP del client: 192.128.58.103
 
 ### Captura 1 - Comprovació de la xarxa
 
@@ -85,7 +79,7 @@ lpstat -p -d
 
 Aquí hauria d'aparèixer la impressora PDF. El nom pot variar segons la instal·lació, així que he apuntat el nom que surt al meu servidor.
 
-**Nom de la impressora:** `[ESCRIU EL NOM QUE ET SURT]`
+**Nom de la impressora:** biel-VirtualBox
 
 ### Captura 3 - Impressora PDF instal·lada
 
@@ -172,13 +166,10 @@ En aquesta captura es veu la pàgina web de CUPS i la impressora que he configur
 
 Ara he anat al client Zorin OS. Des de la configuració del sistema he entrat a l'apartat d'impressores i he afegit una impressora de xarxa.
 
-He utilitzat la IP del servidor i el nom de la cua de la impressora. La connexió té aquest format:
+He utilitzat la IP del servidor i el nom de la cua de la impressora. 
 
 
-ipp://IP_DEL_SERVIDOR:631/printers/NOM_DE_LA_IMPRESSORA
-
-
-He substituït `IP_DEL_SERVIDOR` i `NOM_DE_LA_IMPRESSORA` pels valors reals de la meva configuració.
+He substituït 192.128.58.103  i Biel-VirtualBox pels valors reals de la meva configuració.
 
 Quan l'he afegit, he comprovat que aparegués a la llista d'impressores del client.
 
@@ -201,7 +192,7 @@ echo "Prova d'impressio CUPS" > prova.txt
 lp -d NOM_DE_LA_IMPRESSORA prova.txt
 
 
-He canviat `NOM_DE_LA_IMPRESSORA` pel nom real de la cua que he configurat.
+He canviat Estruch-VirtualBox pel nom real de la cua que he configurat.
 
 Per veure els treballs d'impressió he utilitzat:
 
@@ -230,36 +221,3 @@ En aquesta captura es veu el resultat de la prova i el fitxer PDF que s'ha creat
 ![Captura 8](images/screenshot8.png)
 
 ---
-
-## 9. Resultat final
-
-Després de fer els passos, he pogut afegir al client Zorin OS la impressora virtual que està configurada al servidor Ubuntu Server.
-
-He enviat un document de prova des del client i he comprovat al servidor si s'havia generat el PDF. D'aquesta manera he verificat que la impressora compartida funciona.
-
-## 10. Fonts consultades
-
-- [Documentació de la pràctica CUPS](https://github.com/SMX-SOX/Materials/blob/main/NF1_SOX_Linux/UD4_Compart_Recursos/A2-CUPS.md)
-- [How to set up CUPS Print Server on Ubuntu](https://www.fosslinux.com/61850/how-to-set-up-cups-print-server-on-ubuntu.htm)
-- [Instalar una impresora virtual en Ubuntu](https://somebooks.es/instalar-una-impresora-virtual-en-ubuntu-22-04-lts/)
-
-## 11. Fitxers per entregar
-
-L'estructura del repositori queda així:
-
-
-
-├── README.md
-├── AA2-CUPS.md
-└── images/
-    ├── screenshot1.png
-    ├── screenshot2.png
-    ├── screenshot3.png
-    ├── screenshot4.png
-    ├── screenshot5.png
-    ├── screenshot6.png
-    ├── screenshot7.png
-    └── screenshot8.png
-
-
-Abans d'entregar-ho, he de posar les meves captures reals dins de la carpeta `images` i comprovar que els noms coincideixin amb els que apareixen en aquest document. També he de substituir les dades entre claudàtors per les dades de les meves màquines.
